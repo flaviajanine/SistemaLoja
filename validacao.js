@@ -1,3 +1,11 @@
+function validaTipo(radios){
+    for (i = 0; i < radios.length; ++ i)
+    {
+        if (radios [i].checked) return true;
+    }
+    return false;
+}
+
 function validateForm() {
     var x = document.forms["meuform"]["codMercadoria"].value;
     if (x == null || x == "") {
@@ -24,9 +32,13 @@ function validateForm() {
         alert("O preço deve ser informado!");
         return false;
     }
-    var c = document.forms["meuform"]["tipoNegocio"].value;
-    if (c == null || c == "") {
-        alert("O tipo do negócio deve ser informado!");
+	
+    if(validaTipo (document.forms["meuform"]["tipoNegocio"])){
+        return true;
+    }
+    else
+    {
+        alert('O tipo do negócio deve ser informado!');
         return false;
     }
 }
